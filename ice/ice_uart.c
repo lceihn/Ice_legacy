@@ -1,4 +1,3 @@
-```c
 /**
  * @file ice_uart.c
  * @brief stm32 uart standred communication
@@ -231,4 +230,3 @@ void ice_usb_rxcallback(IceUart *ice, uint8_t *Buf, uint32_t *Len)
 }
 
 #endif
-```
