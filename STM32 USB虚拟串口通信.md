@@ -20,14 +20,10 @@
 - **usbd_cdc_if.c **中添加**ice_uart.h**, 修改`CDC_Receive_FS()`
 
   - ```c
-    #if ice_usb
         ice_usb_rxcallback(&ice_uart1, Buf, Len);
-    //    USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
-    //    USBD_CDC_ReceivePacket(&hUsbDeviceFS);
-    #else
+
         USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
         USBD_CDC_ReceivePacket(&hUsbDeviceFS);
-    #endif
     ```
 
 
