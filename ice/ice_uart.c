@@ -1,3 +1,4 @@
+```c
 /**
  * @file ice_uart.c
  * @brief stm32 uart standred communication
@@ -13,6 +14,9 @@
 #include "ice_uart.h"
 
 /* Include */
+
+/* global variable  */
+IceUart ice_uart1 = {&huart1};
 
 /* static function */
 static uint8_t isChecked(IceUart *ice);
@@ -76,10 +80,8 @@ void ice_uart_it_callback(IceUart *ice)
 /**
  * @brief stm32 uart init, start uart dma receive
  */
-void ice_uart_init(IceUart *ice, UART_HandleTypeDef *huart)
+void ice_uart_init(IceUart *ice)
 {
-    ice->huart = huart;
-    ice->rx_flag = 0;
     __HAL_UART_ENABLE_IT(ice->huart, UART_IT_IDLE); //enable idle
     HAL_UART_Receive_DMA(ice->huart, ice->rx_buf, ice_dma_size);   //start uart dma receive
 }
@@ -229,3 +231,4 @@ void ice_usb_rxcallback(IceUart *ice, uint8_t *Buf, uint32_t *Len)
 }
 
 #endif
+```
