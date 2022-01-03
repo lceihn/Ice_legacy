@@ -67,19 +67,16 @@ typedef enum
 }Ack_Flag_Type;
 
 /* global variable */
-//extern IceUart ice_uart1;
+extern IceUart ice_uart1;
 
 #if ice_usb
-#include "usbd_def.h"
 #include "usbd_cdc_if.h"
-extern USBD_HandleTypeDef hUsbDeviceFS;
-extern uint8_t UserRxBufferFS[APP_RX_DATA_SIZE];
 #endif
 
 /* ice uart function */
-void ice_uart_init(IceUart *ice, UART_HandleTypeDef *huart);    //ice uart init
-void ice_uart_it_callback(IceUart *ice);                        //ice uart interrupt callback, add to stm32f1xx_it.c void USARTx_IRQHandler(void)
-void ice_uart_task(IceUart *ice);		                        //process uart receive task
+void ice_uart_init(IceUart *ice);           //ice uart init
+void ice_uart_it_callback(IceUart *ice);    //ice uart interrupt callback, add to stm32f1xx_it.c void USARTx_IRQHandler(void)
+void ice_uart_task(IceUart *ice);		    //process uart receive task
 
 #if ice_usb
 void ice_usb_reset();
